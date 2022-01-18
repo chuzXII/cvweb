@@ -15,16 +15,26 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('beranda');
-});
+Route::get('/',[AdminController::class,'beranda']);
+
 
 Route::get('/dashboard',[AdminController::class,'index']);
-Route::get('/table',[AdminController::class,'vtable']);
+Route::get('/tableuser',[AdminController::class,'vtable']);
+
 Route::get('/login',[LoginController::class,'indexlog']);
 Route::get('/register',[LoginController::class,'indexregis']);
 Route::post('/reg',[LoginController::class,'register']);
 Route::post('/log',[LoginController::class,'login']);
+
+Route::get('/tableproject',[AdminController::class,'vtproject']);
+Route::get('/pageadd',[AdminController::class,'vaproject']);
+Route::get('/pageedit/{id}',[AdminController::class,'veproject']);
+Route::post('/updateproject/{id}',[AdminController::class,'updateproject']);
+Route::post('/add',[AdminController::class,'addproject']);
+Route::get('/detailproject/{id}',[AdminController::class,'detailproject']);
+
+
+
 
 
 

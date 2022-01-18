@@ -19,7 +19,7 @@
         <h4>Basic DataTables</h4>
         </div>
         <div class="col-4 text-right">
-        <a href="#" class="btn btn-primary btn-sm">Add Data</a>
+        <a href="/pageadd" class="btn btn-primary btn-sm">Add Data</a>
         </div>
         
       </div>
@@ -31,15 +31,14 @@
           <table class="table table-striped" id="table-1">
             <thead>
               <tr>
-                <th class="text-center">
+                <th class="text-center" style="width: 25px;">
                   #
                 </th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Image</th>
-                <th>Created_at</th>
-                <th>Updated_at</th>
-                <th>Action</th>
+                <th style="width: 10px;">Nama Project</th>
+                <th>Deskripsi</th>
+                <th>Link</th>
+                <th style="width: 50px;">Image</th>
+                <th style="width: 140px;">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -48,14 +47,13 @@
                 <td>
                   1
                 </td>
-                <td>{{$dat->name}}</td>
-                <td>{{$dat->email}}</td>
+                <td>{{$dat->nama_project}}</td>
+                <td>{{$dat->deskripsi}}</td>
+                <td>{{$dat->link}}</td>
                 <td>
-                  <img alt="image" src="../assets/img/avatar/avatar-5.png" class="rounded-circle" width="35" data-toggle="tooltip" title="Wildan Ahdian">
+                  <img alt="image" src="{{asset('img/imgproject')}}/{{$dat->img}}" width="150">
                 </td>
-                <td>{{$dat->created_at}}</td>
-                <td>{{$dat->updated_at}}</td>
-                <td><a href="/edit/{{$dat->id}}" class="btn btn-info btn-sm">Detail</a> <a href="/delete/{{$dat->id}}" class="btn btn-danger btn-sm">Delete</a></td>
+                <td><a href="/detailproject/{{$dat->id_project}}" class="btn btn-info btn-sm">Detail</a> <a href="/pageedit/{{$dat->id_project}}" class="btn btn-warning btn-sm">Edit</a> <a href="/delete/{{$dat->id}}" class="btn btn-danger btn-sm">Delete</a></td>
               </tr>
               @endforeach
             </tbody>
