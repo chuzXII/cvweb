@@ -45,7 +45,7 @@ class LoginController extends Controller
         $a = LoginModel::where('email',$email)->count();
         $b = LoginModel::where('email',$email)->pluck('password')->first();
         if($a <= 0){
-            $message = "email tidak ada";
+            return redirect('/login')->with('gagal','email tidak ada');
         }
         else{
             if (Hash::check($password, $b))
@@ -53,7 +53,7 @@ class LoginController extends Controller
                 return redirect('/dashboard');
             }
             else{
-                dd($a);
+                return redirect('/login')->with('gagal','password salah');
             }
         }
 

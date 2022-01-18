@@ -39,9 +39,16 @@
                     <div class="invalid-feedback">
                       Please fill in your email
                     </div>
+                    
                     @error('email')
-                          <div class="alert alert-danger">{{ $message }}</div>
-                      @enderror
+                          <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
+                      @if (session('gagal'))
+                          <div class="alert alert-danger mt-3">
+                              {{ session('gagal') }}
+                          </div>
+                      @endif
+                    
                   </div>
 
                   <div class="form-group">
@@ -50,9 +57,12 @@
                     <div class="invalid-feedback">
                       please fill in your password
                     </div>
+                    
                     @error('password')
-                          <div class="alert alert-danger sm">{{ $message }}</div>
-                      @enderror
+                          <div class="alert alert-danger sm mt-3">{{ $message }}</div>
+                    @enderror
+                      
+                      
                   </div>
 
                   <div class="form-group">
