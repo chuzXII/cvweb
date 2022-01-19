@@ -42,7 +42,11 @@ class LoginController extends Controller
 
         $email = $request->email;
         $password = $request->password;
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 105d5613e4c6cb9376a1429f1ba0ea4c444b632b
         $a = LoginModel::where('email',$email)->first();
         $b = LoginModel::where('email',$email)->pluck('password')->first();
         if($a){
