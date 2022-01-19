@@ -51,7 +51,7 @@
                 <td>{{$dat->name}}</td>
                 <td>{{$dat->email}}</td>
                 <td>
-                  <img alt="image" src="../assets/img/avatar/avatar-5.png" class="rounded-circle" width="35" data-toggle="tooltip" title="Wildan Ahdian">
+                  <img alt="image" src="{{asset('img/imgprofile')}}/{{$dat->img}}" class="rounded-circle" width="50">
                 </td>
                 <td>{{$dat->created_at}}</td>
                 <td>{{$dat->updated_at}}</td>

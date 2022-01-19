@@ -25,6 +25,7 @@ Route::get('/login',[LoginController::class,'indexlog']);
 Route::get('/register',[LoginController::class,'indexregis']);
 Route::post('/reg',[LoginController::class,'register']);
 Route::post('/log',[LoginController::class,'login']);
+Route::get('/logout',[LoginController::class,'logout']);
 
 Route::get('/tableproject',[AdminController::class,'vtproject']);
 Route::get('/pageadd',[AdminController::class,'vaproject']);
@@ -32,6 +33,8 @@ Route::get('/pageedit/{id}',[AdminController::class,'veproject']);
 Route::post('/updateproject/{id}',[AdminController::class,'updateproject']);
 Route::post('/add',[AdminController::class,'addproject']);
 Route::get('/detailproject/{id}',[AdminController::class,'detailproject']);
+Route::get('/deleteproject/{id}',[AdminController::class,'deleteproject']);
+
 
 
 

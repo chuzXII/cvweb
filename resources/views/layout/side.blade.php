@@ -16,7 +16,7 @@
                 <a href="/tableproject" class="nav-link"><i class="far fa-file-alt"></i></i><span>Table Project</span></a>
               </li>
               <li class="nav-item">
-                <a href="/table" class="nav-link"><i class="far fa-file-alt"></i></i><span>Table</span></a>
+                <a href="/tableuser" class="nav-link"><i class="far fa-file-alt"></i></i><span>Table User</span></a>
               </li>
             </ul>
         </aside>

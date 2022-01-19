@@ -9,10 +9,21 @@ use Illuminate\Support\Facades\Hash;
 class LoginController extends Controller
 {
     public function indexlog(){
-        return view('welcome.login');
+        if(session('log')){
+            return abort(404);
+        }
+        else{
+            return view('welcome.login');
+        }
+        
     }
     public function indexregis(){
-        return view('welcome.register');
+        if(session('log')){
+            return abort(404);
+        }else{
+            return view('welcome.register');
+        }
+        
     }
     public function register(Request $request){
         $request->validate([
@@ -35,35 +46,36 @@ class LoginController extends Controller
         return redirect('/login');
     }
     public function login(Request $request){
-        $request->validate([
-            'email' => 'required|email',
-            'password' =>'required|min:8'
-        ]);
-
-        $email = $request->email;
-        $password = $request->password;
-        
-        $a = LoginModel::where('email',$email)->first();
-        $b = LoginModel::where('email',$email)->pluck('password')->first();
-        if($a){
-            if (Hash::check($password, $b))
-            {
-                session()->put([
-                    'username' => $a->name,
-                    'log' => true
-                ]);
-                return redirect('/dashboard');
+            $request->validate([
+                'email' => 'required|email',
+                'password' =>'required|min:8'
+            ]);
+    
+            $email = $request->email;
+            $password = $request->password;
+            
+            $a = LoginModel::where('email',$email)->first();
+            $b = LoginModel::where('email',$email)->pluck('password')->first();
+            if($a){
+                if (Hash::check($password, $b))
+                {
+                    session()->put([
+                        'username' => $a->name,
+                        'imgname' => $a->img,
+                        'log' => true
+                    ]);
+                    return redirect('/dashboard');
+                }
+                else{
+                    return redirect('/login')->with('gagal','password salah');
+                } 
             }
             else{
-                return redirect('/login')->with('gagal','password salah');
-            } 
+                return redirect('/login')->with('gagal','email tidak ada');
+            }
         }
-        else{
-            return redirect('/login')->with('gagal','email tidak ada');
-        }
-
-            
-           
-        
+    public function logout(){
+        session()->flush();
+        return redirect('/login');
     }
 }

@@ -53,7 +53,7 @@
                 <td>
                   <img alt="image" src="{{asset('img/imgproject')}}/{{$dat->img}}" width="150">
                 </td>
-                <td><a href="/detailproject/{{$dat->id_project}}" class="btn btn-info btn-sm">Detail</a> <a href="/pageedit/{{$dat->id_project}}" class="btn btn-warning btn-sm">Edit</a> <a href="/delete/{{$dat->id}}" class="btn btn-danger btn-sm">Delete</a></td>
+                <td><a href="/detailproject/{{$dat->id_project}}" class="btn btn-info btn-sm">Detail</a> <a href="/pageedit/{{$dat->id_project}}" class="btn btn-warning btn-sm">Edit</a> <a href="/deleteproject/{{$dat->id_project}}" class="btn btn-danger btn-sm">Delete</a></td>
               </tr>
               @endforeach
             </tbody>

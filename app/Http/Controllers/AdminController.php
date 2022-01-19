@@ -9,8 +9,14 @@ use App\Models\ProjectModel;
 
 class AdminController extends Controller
 {
+    public function __construct(){
+        if(session('log')){
+            return abort(404);
+        }
+    }
     public function index(){
-        return view('pagekonten.dashboard');
+        $data = ProjectModel::get()->count();
+        return view('pagekonten.dashboard',['data'=>$data]);
     }
     public function beranda(){
         $data = ProjectModel::orderby('created_at','desc')->paginate(9);
@@ -129,7 +135,20 @@ class AdminController extends Controller
 
         }
     }
-    public function deleteproject(){
+    public function deleteproject($id){
+        $imgdb = ProjectModel::where('id_project',$id)->pluck('img')->first();
 
+        $lokasi = public_path('img/imgproject/'.$imgdb);
+            if(file_exists($lokasi))
+            {
+               unlink($lokasi);
+            }
+        $data = ProjectModel::where('id_project',$id)->delete();
+        if($data){
+            return redirect('/tableproject')->with('berhasil',' Berhasil Menambah Project');
+        }
+        else{
+            return redirect('/tableproject')->with('gagal',' Gagal Menambah Project');
+        }
     }
 }
