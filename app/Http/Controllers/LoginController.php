@@ -42,19 +42,24 @@ class LoginController extends Controller
 
         $email = $request->email;
         $password = $request->password;
-        $a = LoginModel::where('email',$email)->count();
+
+        $a = LoginModel::where('email',$email)->first();
         $b = LoginModel::where('email',$email)->pluck('password')->first();
-        if($a <= 0){
-            return redirect('/login')->with('gagal','email tidak ada');
-        }
-        else{
+        if($a){
             if (Hash::check($password, $b))
             {
+                session()->put([
+                    'username' => $a->name,
+                    'log' => true
+                ]);
                 return redirect('/dashboard');
             }
             else{
                 return redirect('/login')->with('gagal','password salah');
-            }
+            } 
+        }
+        else{
+            return redirect('/login')->with('gagal','email tidak ada');
         }
 
             
