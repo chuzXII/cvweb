@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BerandaController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +17,7 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/',[AdminController::class,'beranda']);
+Route::get('/',[BerandaController::class,'index']);
 
 
 Route::get('/dashboard',[AdminController::class,'index']);

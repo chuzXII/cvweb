@@ -53,10 +53,12 @@
                           @enderror
                         </div>
                     </div>
-                    <div class="form-group row mb-3">
+                    <div class="form-group row ">
                       <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Deskripsi</label>
                       <div class="col-sm-12 col-md-7">
-                        <textarea class="summernote-simple" name="deskripsi"></textarea>
+                        <div class="input-group">
+                          <textarea class="form-control" aria-label="With textarea" style="height: 100px"></textarea>
+                        </div>
                         @error('deskripsi')
                           <div class="alert alert-danger mt-3">{{ $message }}</div>
                       @enderror

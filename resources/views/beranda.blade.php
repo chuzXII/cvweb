@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{asset('Techie')}}/assets/img/favicon.png" rel="icon">
-  <link href="{{asset('Techie')}}/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="{{asset('img/imgasset')}}/1.png" rel="icon">
+  <link href="{{asset('img/imgasset')}}/1.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -40,7 +40,7 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center justify-content-between">
-      <h1 class="logo"><a href="index.html">IM</a></h1>
+      <h1 class="logo"><a href="/">cessta</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -68,7 +68,14 @@
             </ul>
           </li> -->
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="nav-link scrollto" href="/login">Login</a></li>
+          
+          @if(!session('log'))
+            <li><a class="nav-link scrollto" href="/login">Login</a></li>
+          @endif
+            
+          
+          
+          
           <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

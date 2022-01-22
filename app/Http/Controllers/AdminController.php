@@ -10,19 +10,14 @@ use App\Models\ProjectModel;
 class AdminController extends Controller
 {
     public function __construct(){
-        if(session('log')){
-            return abort(404);
-        }
+
+        $this->middleware('logged');
+
     }
     public function index(){
         $data = ProjectModel::get()->count();
         return view('pagekonten.dashboard',['data'=>$data]);
     }
-    public function beranda(){
-        $data = ProjectModel::orderby('created_at','desc')->paginate(9);
-        return view('beranda',['data'=>$data]);
-    }
-
     public function vtable(){
         $data = AdminModel::all();
         return view('pagekonten.table',['data'=>$data]);
@@ -78,7 +73,7 @@ class AdminController extends Controller
             $lokasi = public_path('img/imgproject/'.$imgdb);
             if(file_exists($lokasi))
             {
-               unlink($lokasi);
+               @unlink($lokasi);
             }
             $imgname = rand(30,9999).'.'.$img->extension();
             $img->move(public_path('img/imgproject'),$imgname);
@@ -96,7 +91,6 @@ class AdminController extends Controller
                 return redirect('/tableproject')->with('gagal',' Gagal Menambah Project');
             }
         }
-       
     }
 
     
@@ -141,7 +135,7 @@ class AdminController extends Controller
         $lokasi = public_path('img/imgproject/'.$imgdb);
             if(file_exists($lokasi))
             {
-               unlink($lokasi);
+               @unlink($lokasi);
             }
         $data = ProjectModel::where('id_project',$id)->delete();
         if($data){
