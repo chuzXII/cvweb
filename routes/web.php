@@ -37,6 +37,8 @@ Route::post('/add',[AdminController::class,'addproject']);
 Route::get('/detailproject/{id}',[AdminController::class,'detailproject']);
 Route::get('/deleteproject/{id}',[AdminController::class,'deleteproject']);
 
+Route::get('/detailuser/{id}',[AdminController::class,'vdetailuser']);
+
 
 
 

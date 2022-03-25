@@ -5,13 +5,13 @@
         <section class="section">
           <div class="section-header">
             <div class="section-header-back">
-              <a href="/tableproject" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+              <a class="btn btn-icon" href="/tableproject"> <i class="fas fa-arrow-left"></i></a>
             </div>
-            <h1>Create New Post</h1>
+            <h1>Edit Project</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="/dashboard">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="/tableuser">Table Project</a></div>
-              <div class="breadcrumb-item">Create New Project</div>
+              <div class="breadcrumb-item"><a href="/tableproject">Table Project</a></div>
+              <div class="breadcrumb-item">Edit Project</div>
             </div>
           </div>
 
@@ -20,7 +20,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Add Your Project</h4>
+                    <h4>Edit Your Project</h4>
                   </div>
                   <div class="card-body">
                     @if (session('gagal'))
@@ -43,6 +43,17 @@
                           <div class="alert alert-danger mt-3">{{ $message }}</div>
                         @enderror
                       </div> 
+                    </div>
+                    <div class="form-group row mb-3">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" for="exampleFormControlSelect1">Kategori Project</label>
+                      <div class="col-sm-12 col-md-7">
+                      <select class="form-control" id="exampleFormControlSelect1" name="kategori" >
+                        <option value="filter-website" {{($data->kategori) == 'filter-web' ? 'selected="selected"' : '' }} >Website</option>
+                        <option value="filter-appm" {{($data->kategori) == 'filter-appm' ? 'selected="selected"' : '' }} >App Mobile</option>
+                        <option value="filter-appd"{{($data->kategori) == 'filter-appd' ? 'selected="selected"' : '' }} >App Desktop</option>
+                        <option value="filter-other" {{($data->kategori) == 'filter-other' ? 'selected="selected"' : '' }} >Other</option>
+                      </select>
+                      </div>
                     </div>
                     <div class="form-group row mb-3">
                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Link</label>

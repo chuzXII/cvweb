@@ -9,6 +9,7 @@ class BerandaController extends Controller
 {
     public function index(){
         $data = ProjectModel::orderby('created_at','desc')->paginate(9);
-        return view('beranda',['data'=>$data]);
+        $countproject = ProjectModel::get()->count();
+        return view('beranda',['data'=>$data,'countp'=>$countproject]);
     }
 }

@@ -27,12 +27,6 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('Techie')}}/assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Techie - v4.7.0
-  * Template URL: https://bootstrapmade.com/techie-free-skin-bootstrap-3/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -68,10 +62,6 @@
             </ul>
           </li> -->
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          
-          @if(!session('log'))
-            <li><a class="nav-link scrollto" href="/login">Login</a></li>
-          @endif
             
           
           
@@ -90,8 +80,8 @@
     <div class="container-fluid" data-aos="fade-up">
       <div class="row justify-content-center">
         <div class="col-xl-5 col-lg-6 pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h1>Bettter Digital Experience With Techie</h1>
-          <h2>We are team of talented designers making websites with Bootstrap</h2>
+          <h1>Welcome to my Portfolio</h1>
+          <h2>I'm a beginner programmer</h2>
           <div><a href="#about" class="btn-get-started scrollto">Get Started</a></div>
         </div>
         <div class="col-xl-4 col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="150">
@@ -113,16 +103,13 @@
             <img src="{{asset('Techie')}}/assets/img/about.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
-            <h3>Voluptatem dignissimos provident quasi corporis</h3>
+            <h3>Hi,my name is Ilham nur</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              I am a beginner programmer
             </p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-            </ul>
+            <p>
+                This website is for my portfolio and my project results
+            </p>
             <a href="#" class="read-more">Read More <i class="bi bi-long-arrow-right"></i></a>
           </div>
         </div>
@@ -136,24 +123,19 @@
 
         <div class="row counters">
 
-          <div class="col-lg-3 col-6 text-center">
+          <div class="col-lg-4 col-7 text-center">
             <span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>
             <p>Clients</p>
           </div>
 
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>
+          <div class="col-lg-4 col-7 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="{{$countp}}" data-purecounter-duration="1" class="purecounter"></span>
             <p>Projects</p>
           </div>
 
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>
+          <div class="col-lg-4 col-7 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1" class="purecounter"></span>
             <p>Hours Of Support</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Hard Workers</p>
           </div>
 
         </div>
@@ -300,16 +282,17 @@
 
         <div class="section-title">
           <h2>Portfolio</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>This is a project i have ever made.</p>
         </div>
 
         <div class="row">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
+              <li data-filter=".filter-appm">App Mobile</li>
+              <li data-filter=".filter-appd">App Desktop</li>
+              <li data-filter=".filter-web">Website</li>
+              <li data-filter=".filter-other">Other</li>
             </ul>
           </div>
         </div>
@@ -317,7 +300,7 @@
         <div class="row portfolio-container">
 
           @foreach($data as $dat)
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class='col-lg-4 col-md-6 portfolio-item {{$dat->kategori}}'>
             <div class="portfolio-wrap">
               <img src="{{asset('img/imgproject')}}/{{$dat->img}}" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -404,7 +387,7 @@
 
         <div class="section-title">
           <h2>Contact</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>You have any questions please contact us.</p>
         </div>
 
         <div class="row">
@@ -412,7 +395,7 @@
             <div class="info-box mb-4">
               <i class="bx bx-map"></i>
               <h3>Our Address</h3>
-              <p>A108 Adam Street, New York, NY 535022</p>
+              <p class="px-4">Kademangan Kulon, Kademangan, Kec. Bondowoso, Kabupaten Bondowoso, Jawa Timur 68217</p>
             </div>
           </div>
 
@@ -437,7 +420,8 @@
         <div class="row">
 
           <div class="col-lg-6 ">
-            <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+              <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d987.94684504619!2d113.82962322916624!3d-7.917264971321972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6dcc6b8869d65%3A0x4d70b07ed09ddbeb!2sBondowoso%2C%20Kademangan%20Kulon%2C%20Kademangan%2C%20Kec.%20Bondowoso%2C%20Kabupaten%20Bondowoso%2C%20Jawa%20Timur%2068217!5e0!3m2!1sid!2sid!4v1648162948149!5m2!1sid!2sid"frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+            
           </div>
 
           <div class="col-lg-6">
@@ -480,13 +464,13 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Techie</h3>
+            <h3>Cessta</h3>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
+             Kademangan Kulon, Kademangan<br>
+              Kec. Bondowoso, Kabupaten Bondowoso 68217<br>
+              Jawa Timur <br><br>
               <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              <strong>Email:</strong> kzkzaj@gmail.com<br>
             </p>
           </div>
 
@@ -512,13 +496,7 @@
             </ul>
           </div>
 
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
+          
 
         </div>
       </div>

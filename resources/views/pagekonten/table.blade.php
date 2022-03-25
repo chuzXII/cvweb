@@ -55,7 +55,7 @@
                 </td>
                 <td>{{$dat->created_at}}</td>
                 <td>{{$dat->updated_at}}</td>
-                <td><a href="/edit/{{$dat->id}}" class="btn btn-info btn-sm">Detail</a> <a href="/delete/{{$dat->id}}" class="btn btn-danger btn-sm">Delete</a></td>
+                <td><a href="/detail/{{$dat->id}}" class="btn btn-info btn-sm">Detail</a> <a href="/delete/{{$dat->id}}" class="btn btn-danger btn-sm">Delete</a></td>
               </tr>
               @endforeach
             </tbody>

@@ -3,6 +3,9 @@
 <div class="main-content">
     <section class="section">
       <div class="section-header">
+        <div class="section-header-back">
+        <a class="btn btn-icon" href="/tableproject"> <i class="fas fa-arrow-left"></i></a>
+        </div>
         <h1>Detail Project</h1>
         <div class="section-header-breadcrumb">
           <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
@@ -22,15 +25,28 @@
                 </div>
                 <div class="author-box-details">
                   <div class="author-box-name">
+                    <label for="" class="h5">Nama Project :</label>
                     <p class="title">{{$data->nama_project}}</p>
                   </div>
-                  <div class="author-box-job">Web Developer</div>
+                  <label for="" class="h5">Kategori Project :</label>
+                  <div class="author-box-job">
+                    @if($data->kategori == "filter-web")
+                      <p class="title">Website</p>
+                    @elseif($data->kategori == "filter-appm")
+                    <p class="title">App Mobile</p>
+                    @elseif($data->kategori == "filter-appd")
+                    <p class="title">App Desktop</p>
+                    @elseif($data->kategori == "filter-other")
+                    <p class="title">other</p>
+                    @endif
+                  </div>
+                  <label for="" class="h5">Deskripsi Project :</label>
                   <div class="author-box-description">
                     <p>{{$data->deskripsi}}</p>
                   </div>
                   <div class="w-100 d-sm-none"></div>
                   <div class="float-right mt-sm-0 mt-3">
-                    <a href="{{$data->link}}" class="btn">View Posts <i class="fas fa-chevron-right"></i></a>
+                    <a href='{{$data->link}}' class="btn">View Posts <i class="fas fa-chevron-right"></i></a>
                   </div>
                 </div>
               </div>

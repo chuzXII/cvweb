@@ -16,16 +16,34 @@
       <div class="card-body">
       <div class="row">
         <div class="col-8">
-        <h4>Basic DataTables</h4>
+          <h4>Basic DataTables</h4>
         </div>
         <div class="col-4 text-right">
-        <a href="/pageadd" class="btn btn-primary btn-sm">Add Data</a>
+          <a href="/pageadd" class="btn btn-primary btn-sm">Add Data</a>
         </div>
-        
       </div>
+      @if (session('b'))
+        <div class="alert alert-success alert-dismissible show fade" style="height:50px">
+          <div class="alert-body">
+            <button class="close" data-dismiss="alert">
+              <span>&times;</span>
+            </button>
+            <p>{{ session('b') }}</p>  
+          </div>
+        </div>
+      @endif
+      @if (session('g'))
+        <div class="alert alert-success alert-dismissible show fade" style="height:50px">
+          <div class="alert-body">
+            <button class="close" data-dismiss="alert">
+              <span>&times;</span>
+            </button>
+            <p>{{ session('g') }}</p>  
+          </div>
+        </div>
+      @endif
       <hr>
       </div>
-     
       <div class="card-body">
         <div class="table-responsive">
           <table class="table table-striped" id="table-1">
@@ -35,6 +53,7 @@
                   #
                 </th>
                 <th style="width: 10px;">Nama Project</th>
+                <th>Kategori</th>
                 <th>Deskripsi</th>
                 <th>Link</th>
                 <th style="width: 50px;">Image</th>
@@ -48,12 +67,25 @@
                   1
                 </td>
                 <td>{{$dat->nama_project}}</td>
+                <td> @if($dat->kategori == "filter-web")
+                    Website
+                    @elseif($dat->kategori == "filter-appm")
+                    App Mobile
+                    @elseif($dat->kategori == "filter-appd")
+                    App Desktop
+                    @elseif($dat->kategori == "filter-other")
+                    Other
+                    @endif</td>
                 <td>{{$dat->deskripsi}}</td>
                 <td>{{$dat->link}}</td>
                 <td>
-                  <img alt="image" src="{{asset('img/imgproject')}}/{{$dat->img}}" width="150">
+                  <img class="p-2" alt="image" src="{{asset('img/imgproject')}}/{{$dat->img}}" width="100">
                 </td>
-                <td><a href="/detailproject/{{$dat->id_project}}" class="btn btn-info btn-sm">Detail</a> <a href="/pageedit/{{$dat->id_project}}" class="btn btn-warning btn-sm">Edit</a> <a href="/deleteproject/{{$dat->id_project}}" class="btn btn-danger btn-sm">Delete</a></td>
+                <td>
+                  <a href="/detailproject/{{$dat->id_project}}" class="btn btn-info btn-sm">Detail</a>
+                  <a href="/pageedit/{{$dat->id_project}}" class="btn btn-warning btn-sm">Edit</a>
+                  <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
+                </td>
               </tr>
               @endforeach
             </tbody>
@@ -63,4 +95,26 @@
     </div>
   </section>
 </div>
+@foreach ($data as $dat)
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">DELETE</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Delete Project?
+      </div>
+      <div class="modal-footer bg-whitesmoke ">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="/deleteproject/{{$dat->id_project}}"  class="btn btn-danger">YA</a>
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
 @endsection

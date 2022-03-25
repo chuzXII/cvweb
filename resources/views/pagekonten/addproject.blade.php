@@ -5,12 +5,12 @@
         <section class="section">
           <div class="section-header">
             <div class="section-header-back">
-              <a href="/tableproject" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+            <a class="btn btn-icon" href="/tableproject"> <i class="fas fa-arrow-left"></i></a>
             </div>
             <h1>Create New Post</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="/dashboard">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="/tableuser">Table Project</a></div>
+              <div class="breadcrumb-item"><a href="/tableproject">Table Project</a></div>
               <div class="breadcrumb-item">Create New Project</div>
             </div>
           </div>
@@ -20,44 +20,71 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Add Your Project</h4>
+                    <div class="row-sm" style="width: 100%;">
+                      <div class="col-lg-12">
+                        <h4>Add Your Project</h4>
+                      </div>
+                      <div class="col-lg mt-3">
+                      @if (session('b'))
+                        <div class="alert alert-success alert-dismissible show fade" style="height:50px">
+                          <div class="alert-body">
+                            <button class="close" data-dismiss="alert">
+                              <span>&times;</span>
+                            </button>
+                            <p>{{ session('b') }}</p>  
+                          </div>
+                        </div>
+                      @endif
+                      @if (session('g'))
+                        <div class="alert alert-success alert-dismissible show fade" style="height:50px">
+                          <div class="alert-body">
+                            <button class="close" data-dismiss="alert">
+                              <span>&times;</span>
+                            </button>
+                            <p>{{ session('g') }}</p>  
+                          </div>
+                        </div>
+                      @endif
+                      </div>
+                    </div>
                   </div>
                   <div class="card-body">
-                    @if (session('gagal'))
-                    <div class="alert alert-danger mt-1">
-                        {{ session('gagal') }}
-                    </div>
-                    @if (session('berhasil'))
-                    <div class="alert alert-sucsess mt-1">
-                        {{ session('berhasil') }}
-                    </div>
-                @endif
-                @endif
                     <Form action="/add" method="POST" enctype="multipart/form-data">
                       @csrf
                     <div class="form-group row mb-3">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Project</label>
-                      <div class="col-sm-12 col-md-7">
-                        <input type="text" name="namaproject" class="form-control">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" for="formname">Nama Project</label>
+                      <div class="col-sm-12 col-md-7"> 
+                        <input type="text" name="namaproject" id="formname" class="form-control" autofocus>
                         @error('namaproject')
                           <div class="alert alert-danger mt-3">{{ $message }}</div>
                         @enderror
                       </div> 
                     </div>
                     <div class="form-group row mb-3">
-                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Link</label>
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" for="exampleFormControlSelect1">Kategori Project</label>
+                      <div class="col-sm-12 col-md-7">
+                      <select class="form-control" id="exampleFormControlSelect1" name="kategori">
+                        <option value="filter-web">Website</option>
+                        <option value="filter-appm">App Mobile</option>
+                        <option value="filter-appd">App Desktop</option>
+                        <option value="filter-other">Other</option>
+                      </select>
+                      </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" for="formlink">Link</label>
                         <div class="col-sm-12 col-md-7">
-                          <input type="text" name="link" class="form-control">
+                          <input type="text" name="link" id="formlink" class="form-control">
                           @error('link')
                             <div class="alert alert-danger mt-3">{{ $message }}</div>
                           @enderror
                         </div>
                     </div>
                     <div class="form-group row ">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Deskripsi</label>
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" for="formdeskripsi">Deskripsi</label>
                       <div class="col-sm-12 col-md-7">
                         <div class="input-group">
-                          <textarea class="form-control" name="deskripsi" aria-label="With textarea" style="height: 100px"></textarea>
+                          <textarea class="form-control" name="deskripsi" id="formdeskripsi" aria-label="With textarea" style="height: 100px"></textarea>
                         </div>
                         @error('deskripsi')
                           <div class="alert alert-danger mt-3">{{ $message }}</div>

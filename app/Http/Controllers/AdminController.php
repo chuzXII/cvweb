@@ -62,10 +62,10 @@ class AdminController extends Controller
                 
             ]);
             if($data){
-                return redirect('/tableproject')->with('berhasil',' Berhasil Menambah Project');
+                return redirect('/tableproject')->with('b',' Berhasil Mengubah Project');
             }
             else{
-                return redirect('/tableproject')->with('gagal',' gagal Menambah Project');
+                return redirect('/tableproject')->with('g',' gagal Mengubah Project');
             }
             
         }
@@ -85,10 +85,10 @@ class AdminController extends Controller
                 'img' => $imgname
             ]);
             if($data){
-                return redirect('/tableproject')->with('berhasil',' Berhasil Menambah Project');
+                return redirect('/tableproject')->with('b',' Berhasil Mengubah Project');
             }
             else{
-                return redirect('/tableproject')->with('gagal',' Gagal Menambah Project');
+                return redirect('/tableproject')->with('g',' Gagal Mengubah Project');
             }
         }
     }
@@ -107,6 +107,7 @@ class AdminController extends Controller
         $link = $request->link;
         $desk = $request->deskripsi;
         $img = $request->image;
+        $cate = $request->kategori;
         
 
         $imgname = rand(30,9999).'.'.$img->extension();
@@ -119,14 +120,14 @@ class AdminController extends Controller
             'link' => $link,
             'deskripsi' => $desk,
             'img' => $imgname,
+            'kategori' => $cate
         ]);
 
         if($data){
-            return redirect('/pageadd')->with('berhasil',' Berhasil Menambah Project');
+            return redirect('/pageadd')->with('b',' Berhasil Menambah Project');
         }
         else{
-            return redirect('/pageadd')->with('gagal',' Gagal Menambah Project');
-
+            return redirect('/pageadd')->with('g',' Gagal Menambah Project');
         }
     }
     public function deleteproject($id){
@@ -139,10 +140,10 @@ class AdminController extends Controller
             }
         $data = ProjectModel::where('id_project',$id)->delete();
         if($data){
-            return redirect('/tableproject')->with('berhasil',' Berhasil Menambah Project');
+            return redirect('/tableproject')->with('b',' Berhasil Menghapus Project');
         }
         else{
-            return redirect('/tableproject')->with('gagal',' Gagal Menambah Project');
+            return redirect('/tableproject')->with('g',' Gagal Menghapus Project');
         }
     }
 }
