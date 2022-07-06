@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\AdminModel;
 use App\Models\ProjectModel;
+use App\Models\Certificatemodel;
+
 
 
 class AdminController extends Controller
@@ -146,4 +148,55 @@ class AdminController extends Controller
             return redirect('/tableproject')->with('g',' Gagal Menghapus Project');
         }
     }
+
+    public function vtcertificate(){
+        $data = Certificatemodel::all();
+        return view('pagekonten.tablecertificate',['data'=>$data]);
+    }
+    public function vacertificate(){
+        return view('pagekonten.addcertificate');
+    }
+    public function addcertificate(Request $request){
+        $this->validate($request,[
+            'namaproject' => 'required|',
+            'image' => 'required|mimes:jpg,jpeg,JPG,JEPG,png|max:2048'
+        ]);
+        $nama = $request->namaproject;
+        $img = $request->image;
+        
+
+        $imgname = rand(30,9999).'.'.$img->extension();
+        $img->move(public_path('img/imgcertificate'),$imgname);
+
+
+
+        $data = Certificatemodel::create([
+            'nama_certificate' => $nama,
+            'img' => $imgname,
+        ]);
+
+        if($data){
+            return redirect('/pageaddcertificate')->with('b',' Berhasil Menambah Project');
+        }
+        else{
+            return redirect('/pageaddcertificate')->with('g',' Gagal Menambah Project');
+        }
+    }
+    public function deletecertificate($id){
+        $imgdb = Certificatemodel::where('id_certificate',$id)->pluck('img')->first();
+
+        $lokasi = public_path('img/imgcertificate/'.$imgdb);
+            if(file_exists($lokasi))
+            {
+               @unlink($lokasi);
+            }
+        $data = Certificatemodel::where('id_certificate',$id)->delete();
+        if($data){
+            return redirect('/tablecertificate')->with('b',' Berhasil Menghapus Project');
+        }
+        else{
+            return redirect('/tablecertificate')->with('g',' Gagal Menghapus Project');
+        }
+    }
+    
 }
