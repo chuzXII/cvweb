@@ -18,6 +18,8 @@ use App\Http\Controllers\BerandaController;
 */
 
 Route::get('/',[BerandaController::class,'index']);
+Route::get('/certificate',[BerandaController::class,'certificate']);
+
 
 
 Route::get('/dashboard',[AdminController::class,'index']);
@@ -36,6 +38,15 @@ Route::post('/updateproject/{id}',[AdminController::class,'updateproject']);
 Route::post('/add',[AdminController::class,'addproject']);
 Route::get('/detailproject/{id}',[AdminController::class,'detailproject']);
 Route::get('/deleteproject/{id}',[AdminController::class,'deleteproject']);
+
+Route::get('/tablecertificate',[AdminController::class,'vtcertificate']);
+Route::get('/pageaddcertificate',[AdminController::class,'vacertificate']);
+Route::post('/addcertificate',[AdminController::class,'addcertificate']);
+Route::get('/deletecertificate/{id}',[AdminController::class,'deletecertificate']);
+
+
+
+
 
 Route::get('/detailuser/{id}',[AdminController::class,'vdetailuser']);
 
