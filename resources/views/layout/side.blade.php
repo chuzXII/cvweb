@@ -15,9 +15,13 @@
               <li class="nav-item {{request()->is('tableproject') ? 'active':''}}">
                 <a href="/tableproject" class="nav-link"><i class="far fa-file-alt"></i></i><span>Table Project</span></a>
               </li>
+              <li class="nav-item {{request()->is('tablecertificate') ? 'active':''}}">
+                <a href="/tablecertificate" class="nav-link"><i class="far fa-file-alt"></i></i><span>Table Certificate</span></a>
+              </li>
               <li class="nav-item {{request()->is('tableuser') ? 'active':''}}">
                 <a href="/tableuser" class="nav-link"><i class="far fa-file-alt"></i></i><span>Table User</span></a>
               </li>
+              
             </ul>
         </aside>
       </div>
