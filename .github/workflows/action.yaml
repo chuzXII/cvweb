@@ -31,15 +31,6 @@ jobs:
           done
           echo "ping success"
 
-      # - name: SSHPASS Github Action
-      #   uses: matheusvanzan/sshpass-action@v2
-      #   with:
-      #     host: ${{ secrets.ZEROTIER_HOST_IP }}
-      #     user: ${{ secrets.SERVER_USER }}
-      #     pass: ${{ secrets.SERVER_PASS }}
-      #     run: |
-      #       ls
-
       - name: deploy
         uses: fifsky/ssh-action@master
         with:
