@@ -1,0 +1,51 @@
+# This is a basic workflow to help you get started with Actions
+
+name: deploy
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  setup-zerotier:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ZeroTier
+        uses: zerotier/github-action@v1.0.1
+        with:
+          network_id: ${{ secrets.ZEROTIER_NETWORK_ID }}
+          auth_token: ${{ secrets.ZEROTIER_CENTRAL_TOKEN }}
+    
+      - name: ping host
+        shell: bash
+        run: |
+          count=10
+          while ! ping -c 1 ${{ secrets.ZEROTIER_HOST_IP }} ; do
+            echo "waiting..." ;
+            sleep 1 ;
+            let count=count-1
+          done
+          echo "ping success"
+
+      # - name: SSHPASS Github Action
+      #   uses: matheusvanzan/sshpass-action@v2
+      #   with:
+      #     host: ${{ secrets.ZEROTIER_HOST_IP }}
+      #     user: ${{ secrets.SERVER_USER }}
+      #     pass: ${{ secrets.SERVER_PASS }}
+      #     run: |
+      #       ls
+
+      - name: deploy
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            cd /var/www/cvweb/ && git pull
+          host: ${{ secrets.ZEROTIER_HOST_IP }}
+          user: root
+          pass: ${{ secrets.SERVER_PASS }}
+
