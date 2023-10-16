@@ -26,8 +26,8 @@ Route::get('/dashboard',[AdminController::class,'index']);
 Route::get('/tableuser',[AdminController::class,'vtable']);
 
 Route::get('/login',[LoginController::class,'indexlog']);
-Route::get('/register',[LoginController::class,'indexregis']);
-Route::post('/reg',[LoginController::class,'register']);
+// Route::get('/register',[LoginController::class,'indexregis']);
+// Route::post('/reg',[LoginController::class,'register']);
 Route::post('/log',[LoginController::class,'login']);
 Route::get('/logout',[LoginController::class,'logout']);
 

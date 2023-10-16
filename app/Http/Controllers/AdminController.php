@@ -18,7 +18,9 @@ class AdminController extends Controller
     }
     public function index(){
         $data = ProjectModel::get()->count();
-        return view('pagekonten.dashboard',['data'=>$data]);
+        $datacer = Certificatemodel::get()->count();
+        $datauser = AdminModel::get()->count();
+        return view('pagekonten.dashboard',['data'=>$data,'datacer'=>$datacer,'datauser'=>$datauser]);
     }
     public function vtable(){
         $data = AdminModel::all();

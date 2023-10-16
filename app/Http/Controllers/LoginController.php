@@ -10,7 +10,7 @@ class LoginController extends Controller
 {
     public function indexlog(){
         if(session('log')){
-            return abort(404);
+            return redirect('/dashboard');
         }
         else{
             return view('welcome.login');
@@ -19,7 +19,7 @@ class LoginController extends Controller
     }
     public function indexregis(){
         if(session('log')){
-            return abort(404);
+            return redirect('/dashboard');
         }else{
             return view('welcome.register');
         }
@@ -39,7 +39,7 @@ class LoginController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'create_at' => now(),
+            'created_at' => now(),
             'updated_at' => now()
         ]);
 
